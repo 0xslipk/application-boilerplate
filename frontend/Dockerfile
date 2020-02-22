@@ -43,6 +43,6 @@ COPY . .
 # Copy the built /dist folder from the development image.
 # This way we are only getting the /dist directory, without the devDependencies,
 # installed in our final image.
-COPY --from=development /usr/src/app/dist ./dist
+COPY --from=development /usr/src/app/build ./build
 
 CMD [ "npm", "run", "start:prod" ]

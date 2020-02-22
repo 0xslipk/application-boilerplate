@@ -1,0 +1,63 @@
+version: '3.7'
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      # Thanks to this property, Docker will now only build the first part of our Dockerfile 
+      # and completely ignore the production part of our build
+      target: development
+    networks:
+      - webnet
+    env_file:
+      - .env
+    depends_on:
+      - backend
+    ports:
+      - 8080:8080
+    command: npm run start:dev
+    volumes:
+      - ./frontend:/usr/src/app
+      - /usr/src/app/node_modules
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+      # Thanks to this property, Docker will now only build the first part of our Dockerfile 
+      # and completely ignore the production part of our build
+      target: development
+    networks:
+      - webnet
+    env_file:
+      - .env
+    depends_on:
+      - database
+    ports:
+      - 8081:8081
+    command: npm run start:dev
+    volumes:
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
+  database:
+    image: mongo:latest
+    container_name: mongodb
+    volumes:
+      - ./data/db:/data/db
+    restart: always
+    ports:
+      - "27017:27017"
+  nginx: 
+    image: nginx:latest
+    container_name: nginx
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - webnet
+    ports:
+      - "80:80"
+    volumes:
+      - ./configurations/nginx.conf:/etc/nginx/conf.d/default.conf
+networks:
+  webnet:
+  
