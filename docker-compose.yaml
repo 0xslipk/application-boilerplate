@@ -44,7 +44,7 @@ services:
       - /usr/src/app/node_modules
   database:
     image: mongo:latest
-    container_name: mongodb
+    container_name: database
     volumes:
       - ./data/db:/data/db
     restart: always

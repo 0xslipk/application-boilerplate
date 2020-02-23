@@ -6,7 +6,7 @@ const hpp = require('hpp');
 const helmet = require('helmet');
 const numCPUs = require('os').cpus().length;
 const http = require('http');
-const serverPort = process.env.WEB_PORT || 8080;
+const serverPort = process.env.PORT || 8080;
 
 const app = express();
 app.use([

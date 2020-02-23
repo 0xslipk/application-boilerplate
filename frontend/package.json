@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "prebuild": "rm -rf build",
-    "start:dev": "PORT=8080 react-scripts start",
-    "start:prod": "node app.js",
+    "start:dev": "NODE_ENV=development react-scripts start",
+    "start:prod": "NODE_ENV=production node app.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
