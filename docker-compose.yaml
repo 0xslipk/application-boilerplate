@@ -34,6 +34,8 @@ services:
       - .env
     environment:
       PORT: 8081
+      MONGO_HOST: database
+      MONGO_DB: application
     depends_on:
       - database
     ports:
