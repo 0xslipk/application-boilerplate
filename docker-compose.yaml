@@ -11,6 +11,8 @@ services:
       - webnet
     env_file:
       - .env
+    environment:
+      PORT: 8080
     depends_on:
       - backend
     ports:
@@ -30,6 +32,8 @@ services:
       - webnet
     env_file:
       - .env
+    environment:
+      PORT: 8081
     depends_on:
       - database
     ports:

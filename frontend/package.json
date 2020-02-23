@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prebuild": "rimraf dist",
-    "start:dev": "react-scripts start",
+    "prebuild": "rm -rf build",
+    "start:dev": "PORT=8080 react-scripts start",
     "start:prod": "node app.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -24,8 +24,7 @@
     "jest": "^24.9.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
-    "@testing-library/user-event": "^7.2.1",
-    "rimraf": "^3.0.0"
+    "@testing-library/user-event": "^7.2.1"
   },
   "eslintConfig": {
     "extends": "react-app"

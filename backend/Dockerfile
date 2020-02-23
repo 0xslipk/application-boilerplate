@@ -12,7 +12,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install only development dependencies from package-lock.json
-RUN npm ci --only=development
+RUN npm ci
 
 COPY . .
 
